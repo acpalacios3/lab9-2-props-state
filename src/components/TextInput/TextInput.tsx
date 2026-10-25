@@ -1,21 +1,28 @@
+import { useState } from 'react';
 import type { TextInputProps } from "../../types"; 
 
+ // types/index.ts
 // export interface TextInputProps {
 //   onTextChange: (text: string) => void;
 //   placeholder?: string;
 //   initialValue?: string;
 // }
 
-import { useState } from 'react';
- 
-export default function TexInput(TextInputProps) {
+export default function TexInput({ 
+  onTextChange,
+  placeholder = "Type your content",
+  initialValue = "",
+}:TextInputProps) {
 
-  const [textValueInput, setText] = useState(TextInputProps.initialValue);
+  const [textValueInput, setValueInput] = useState(initialValue);
+
  
-  const handleTextChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setText(event.target.value);
+  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+
+  const newInputText = (event.target.value);
+  setValueInput(newInputText);
+  onTextChange(newInputText);
+
   };
 
    return (
@@ -23,7 +30,7 @@ export default function TexInput(TextInputProps) {
       <h2>Text Input</h2>
       <textarea
         className="area-input"
-        placeholder ={TextInputProps.placeholder ?? 'Type your Content'}
+        placeholder ={placeholder}
         value = {textValueInput}
         onChange={handleTextChange}
         rows={4}
