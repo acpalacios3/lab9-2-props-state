@@ -13,17 +13,42 @@
 //   targetReadingTime?: number; // in minutes
 // }
 
-
 import { useState } from "react";
-import type { CharacterCounterProps } from "../../types";
 import TexInput from "../TextInput/TextInput";
+import StatsDisplay from "../StatsDisplay/StatsDisplay";
 
 
 export default function CharacterCounter() {
+    // useState for text entered
+    const [textInput, setInput] = useState("");
 
-     return (
+    // Handle text changes received from the TextInput component
+    function handleTextChange(newText: string) {
+        setInput(newText);
+    }
 
-        <div>Character Counter </div>
+
+    // Calculates
+    const stats = {
+        characterCount: textInput.length,
+        // split divides the text each time it encounters a space
+        wordCount: textInput.trim() === "" ? 0 : textInput.trim().split(/\s+/).length,
+
+        // Estimate reading time based on 200 words per minute, Math.ceil rounds up to the next whole minute.
+        readingTime: Math.ceil(
+            (textInput.trim() === "" ? 0 : textInput.trim().split(/\s+/).length) / 200),
+    };
+
+    return (
+
+        <div>Character Counter
+            {/* Pass the callback to the child component */}
+            <TexInput onTextChange={handleTextChange} />
+            {/* Display the number of characters. */}
+            {/* <p>Characters: {textInput.length}</p> */}
+
+            <StatsDisplay stats={stats} />
+        </div>
 
     );
 }
