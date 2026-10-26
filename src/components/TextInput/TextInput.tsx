@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import type { TextInputProps } from "../../types";
 
-// types/index.ts
-// export interface TextInputProps {
-//   onTextChange: (text: string) => void;
-//   placeholder?: string;
-//   initialValue?: string;
-// }
 
 export default function TexInput({
   onTextChange,
@@ -28,8 +22,8 @@ export default function TexInput({
     <form>
 
       <textarea
-        // className="area-input"
-        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
+        className="w-full max-w-full font-normal p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
         placeholder={placeholder}
         value={textValueInput}
         // Call the handler whenever the text changes
