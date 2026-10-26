@@ -40,14 +40,21 @@ export default function CharacterCounter() {
     };
 
     return (
+        
+         <div className="min-h-screen bg-gray-50 p-5">
+            <div className="mx-auto max-w-md space-y-5">
 
         <div>Character Counter
+      
             {/* Pass the callback to the child component */}
             <TexInput onTextChange={handleTextChange} />
             {/* Display the number of characters. */}
             {/* <p>Characters: {textInput.length}</p> */}
 
             <StatsDisplay stats={stats} />
+        </div>
+        
+       </div>
         </div>
 
     );
