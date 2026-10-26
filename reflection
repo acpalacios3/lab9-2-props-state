@@ -1,0 +1,13 @@
+## Reflection Questions:
+
+**1. How did you handle state updates when the text changed?**
+I used useState to store the text in the parent component. When the user types, the child component sends the new text to the parent through a callback function. The parent updates the state, and React recalculates the statistics.
+
+**2. What considerations did you make when calculating reading time?**
+I estimated the reading time assuming that an average person reads about 200 words per minute. I converted the word count into seconds and used Math.ceil to round up to the next whole second. I chose this approach to provide a simple and easy-to-understand estimate that updates as the user types. I also formatted the result as minutes and seconds to make the reading time easier to understand.
+
+**3. How did you ensure the UI remained responsive during rapid text input?**
+I used React state and the onChange event to update the statistics as the user types. I also used Tailwind CSS responsive classes to adjust the layout for different screen sizes.
+
+4. What challenges did you face when implementing the statistics calculations?
+One challenge was counting words correctly when the text was empty or contained extra spaces. I used trim() to remove leading and trailing spaces and a ternary operator (? :) to check if the text was empty before counting the words. Then, I used split(/\s+/).length to split the text using one or more whitespace characters and count the words correctly.
